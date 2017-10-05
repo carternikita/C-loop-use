@@ -1,0 +1,71 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+/* This program was created by Nikita L. Carter on 9/22/2017.
+ * For the purpose of showing what was learned within the text. 
+ * Within this program is a for loop, try/catch method, listbox, & const
+ variables.*/
+
+namespace lab4
+{
+    public partial class TuitionIncreaseAssign : Form
+    {
+        public TuitionIncreaseAssign()
+        {
+            InitializeComponent();
+        }
+                
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            //Exit application
+            this.Close();
+        }
+                
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            //Clear list and textbox
+            tuitionListBox.Items.Clear();
+        }
+
+        private void CalculateButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                const double TUITION_PER_SEMESTER = 6000; //tuition amount variable
+                const double INTEREST = 0.02; //interest value variable
+                double totalTuition; //total variable
+                double interestAmount; //Interest calculation
+                double total;//calucation of year
+                double year = 1;
+
+                while (year <= 5)
+                {
+                    //Calculate balance to be displayed
+                    interestAmount = TUITION_PER_SEMESTER * INTEREST;
+                    total = (TUITION_PER_SEMESTER * 2) + interestAmount;
+                    totalTuition = total * year;
+                    //Display annual tuition in listbox
+                    tuitionListBox.Items.Add("The annual tuition is " +
+                    totalTuition.ToString("c"));
+
+                    //Add year to loop
+                    year++;
+                }
+            }
+            catch(Exception ex)
+            {
+                //Display error
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+    
+    }
+    }
