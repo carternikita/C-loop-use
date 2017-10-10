@@ -1,0 +1,47 @@
+#include<iostream>
+#include<string>
+using namespace std;
+//Program is designed give user the temperature in celsius and fahrenheit
+//from the entry of the depth in kilometers.
+void introduction(void);
+double print_calculation(double depth);//function declaration for celsius
+double conversion(double celsius);//function declaration for celsius to fahrenheit
+
+int main()
+{
+	
+	double depth;
+	char answer = 'y';
+		introduction();
+	do {
+		cout << "Please enter depth in KM: \n";
+		cin >> depth;
+		double celsius = 10 * depth + 20;
+		print_calculation(depth); //calculation of temp Celsius
+		conversion(celsius); //calculation from Celsius to Fahrenheit
+		cout << "The temperature of the earth at a depth of " << depth << " KM is \n";
+		cout << print_calculation(depth) << " in Celsius, & " << conversion(celsius) << " in Fahrenheit.\n";
+		cout << "Would you like to do it again? (y/n):\n";
+		cin >> answer;
+
+	} while (answer == 'y' || answer == 'Y');
+
+}
+	double conversion(double celsius) {
+		double fahrenheit;
+		fahrenheit = 1.8 *celsius + 32;
+		return fahrenheit;
+			}
+
+	void introduction(void)	{
+		cout << "This program will use the depth inside the earth, \n";
+		cout << "given in kilometer, and calulate the temperature of \n";
+		cout << "given depth in Celsius & Fahrenheit.\n";
+		return;
+	}
+	double print_calculation(double depth)	{
+		double celsius;
+		celsius = 10 * depth + 20;
+		return celsius;
+	}
+
