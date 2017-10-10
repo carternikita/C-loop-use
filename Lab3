@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	//This program is to allow user to pick numbers 1-3 and subtract from 23.
+//Game should prompt to play another is user would like.
+	int sticks, choice, remain, remain1, comChoice;
+	char play_again;
+	
+		cout << "Let's play a game of 23!\n"; //user instructions
+		do
+		{
+			sticks = 23;
+			cout << "Enter the number of sticks you wish to pick.\n";
+			cin >> choice;
+			remain = sticks - choice;
+			comChoice = 4 - choice;
+			remain1 = remain - comChoice;
+			sticks = remain1;
+			cout << "You picked " << choice << ". " << remain << " left.\n";
+			cout << "Computer picks " << comChoice << ". " << remain1 << " left.\n";
+				if (choice>3);//informs user of invalid entry
+				{
+				cout << "Entry INVALID! Numbers allowed are 1-3.\n" << "Try Again.\n";
+				break;
+		}
+		}
+			while (sticks >= 0);//allows program to continue until no more sticks available
+			
+		do
+			{
+				sticks -= choice;
+				if (sticks <= 0)
+				{
+					cout << "You lose!" << endl;
+				}
+				else
+				{
+					cout << "You win!" << endl;
+					cout << "Play again? y/n" << endl;
+					cin >> play_again;
+				}
+			} 
+		while (play_again == 'y');
+    {
+			cout << "Let's play a game of 23!\n";
+			}
+				return 0;
+			}
