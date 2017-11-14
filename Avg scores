@@ -1,0 +1,204 @@
+/*This program was created by Nikita L. Carter
+ * on 11/9/17. It show the use of creating and reading
+ * and reading a file/ use of list/use of try catch method/
+ * use of calling methods/and mathmatical equations.
+  */
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+
+namespace Lab9
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+     //Methods to read files from section1,2,3.txt into list boxes
+     private void CollectScores(List<int> section1)
+        {
+            try
+            {
+                //Open files
+                StreamReader inputfile = File.OpenText("Section1.txt");
+               
+                //Read file to list
+                while(!inputfile.EndOfStream)
+                {
+                    section1.Add(int.Parse(inputfile.ReadLine()));
+                }
+
+                //Close the file
+                inputfile.Close();
+            }
+            catch(Exception ex)
+            {
+                //Show error
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        //Methods to display files
+        private void Display(List<int> section1)
+        {
+            foreach(int score in section1)
+            {
+                student1.Items.Add(score);
+            }
+        }
+
+        private void CollectScores2(List<int> section2)
+        {
+            try
+            {
+                //Open files
+                StreamReader inputfile2 = File.OpenText("Section2.txt");
+
+                //Read file to list
+                while (!inputfile2.EndOfStream)
+                {
+                    section2.Add(int.Parse(inputfile2.ReadLine()));
+                }
+
+                //Close the file
+                inputfile2.Close();
+            }
+            catch (Exception ex)
+            {
+                //Show error
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        //Methods to display files
+        private void Display2(List<int> section2)
+        {
+            foreach (int score in section2)
+            {
+                student2.Items.Add(score);
+            }
+        }
+        private void CollectScores3(List<int> section3)
+        {
+            try
+            {
+                //Open files
+                StreamReader inputfile3 = File.OpenText("Section3.txt");
+
+                //Read file to list
+                while (!inputfile3.EndOfStream)
+                {
+                    section3.Add(int.Parse(inputfile3.ReadLine()));
+                }
+
+                //Close the file
+                inputfile3.Close();
+            }
+            catch (Exception ex)
+            {
+                //Show error
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        //Methods to display files
+        private void Display3(List<int> section3)
+        {
+            foreach (int score in section3)
+            {
+                student3.Items.Add(score);
+            }
+        }
+
+        private double Average(List<int> section1)
+        {
+            //Collect averages of each class
+            int total = 0;
+            double avg;
+            //calculate totals and distribute averages
+            foreach (int score in section1)
+            {
+                total += score;
+            }
+            avg = (double)total / section1.Count;
+
+            //return average
+            return avg;
+        }
+        private double Average2(List<int> section2)
+        {
+            //Collect averages of each class
+            int total = 0;
+            double avg;
+            //calculate totals and distribute averages
+            foreach (int score in section2)
+            {
+                total += score;
+            }
+            avg = (double)total / section2.Count;
+
+            //return average
+            return avg;
+        }
+        private double Average3(List<int> section3)
+        {
+            //Collect averages of each class
+            int total = 0;
+            double avg;
+            //calculate totals and distribute averages
+            foreach (int score in section3)
+            {
+                total += score;
+            }
+            avg = (double)total / section3.Count;
+
+            //return average
+            return avg;
+        }
+        private void calculateButton_Click(object sender, EventArgs e)
+        {
+            //Create list to hold files
+            List<int> section1 = new List<int>();
+            List<int> section2 = new List<int>();
+            List<int> section3 = new List<int>();
+
+            //Read from file into list
+            CollectScores(section1);
+            CollectScores2(section2);
+            CollectScores3(section3);
+
+            //Display list
+            Display(section1);
+            Display2(section2);
+            Display3(section3);
+
+            //Calculate averages
+            double average;
+            double average2;
+            double average3;
+            average = Average(section1);
+            avgScoreLabel.Text = average.ToString("n1");
+            average2 = Average2(section2);
+            avg2Label.Text = average2.ToString("n1");
+            average3 = Average3(section3);
+            avg3Label.Text = average3.ToString("n1");
+            
+
+
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            //Close Form
+            this.Close();
+        }
+    }
+}
